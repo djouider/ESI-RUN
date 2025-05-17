@@ -4,8 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -110,16 +115,23 @@ public class AddUserPageController {
         EmployeeCheckBox.setSelected(true);
         IDNumberField.setVisible(true);
     }
-@FXML
-public void initialize() {
-    // Mutual exclusion via listeners
-    IDNumberField.setVisible(false);
-    IDNumberError.setVisible(false);
-    FirstNameError.setVisible(false);
-    LastNameError.setVisible(false);
-    Disabled.setSelected(false);
-    TypeOfUserError.setVisible(false);
 
+    public void SwitchToFareManagement(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FareManagement.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-}
+    @FXML
+    public void initialize() {
+        // Mutual exclusion via listeners
+        IDNumberField.setVisible(false);
+        IDNumberError.setVisible(false);
+        FirstNameError.setVisible(false);
+        LastNameError.setVisible(false);
+        Disabled.setSelected(false);
+        TypeOfUserError.setVisible(false);
+    }
 }
