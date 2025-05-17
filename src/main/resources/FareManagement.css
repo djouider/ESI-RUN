@@ -34,9 +34,8 @@
     -fx-border-style: solid;
     -fx-border-width: 0.5px;
 }
-x
-#FareManagement {
 
+#FareManagement {
     -fx-background-color: #0080FF;
     -fx-text-fill: #F3F1F1;
     -fx-border-radius: 8px;
@@ -51,11 +50,18 @@ x
     -fx-font-weight: bold;
 }
 
-#AddTtileButton {
+#AddNewTtileButton {
     -fx-background-color: #1B69D0;
     -fx-text-fill: #F3F1F1;
 }
 
 #Background {
-    -fx-fill: #000000;
+    -fx-background-color: rgba(0, 0, 0, 0.7);
+}
+
+#AddTitleCard {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
 }

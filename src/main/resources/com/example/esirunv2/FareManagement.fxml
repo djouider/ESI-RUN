@@ -3,8 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -65,17 +66,34 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Button fx:id="AddTtileButton" layoutX="451.0" layoutY="364.0" mnemonicParsing="false" onAction="#addTitleCard" prefHeight="30.0" prefWidth="159.0" text="Add new Transport Title" />
-      <Region fx:id="Background" prefHeight="418.0" prefWidth="640.0" />
+      <Button fx:id="AddNewTtileButton" layoutX="451.0" layoutY="364.0" mnemonicParsing="false" onAction="#addNewTitleCard" prefHeight="30.0" prefWidth="159.0" text="Add new Transport Title" />
+      <StackPane fx:id="Background" prefHeight="418.0" prefWidth="640.0" />
       <AnchorPane fx:id="AddTitleCard" layoutX="124.0" layoutY="68.0" prefHeight="282.0" prefWidth="388.0">
          <children>
-            <Label layoutX="30.0" layoutY="28.0" text="Add Title">
+            <Label layoutX="29.0" layoutY="14.0" text="Add Title">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ComboBox layoutX="117.0" layoutY="75.0" prefWidth="150.0" />
-            <Label layoutX="30.0" layoutY="79.0" text="Type of card" />
+            <ComboBox fx:id="TypeOfCard" layoutX="116.0" layoutY="55.0" onAction="#TitleChoice" prefWidth="150.0" />
+            <Label layoutX="29.0" layoutY="59.0" text="Type of card" />
+            <Button fx:id="CancelButton" layoutX="242.0" layoutY="241.0" mnemonicParsing="false" onAction="#Cancel" text="Cancel" />
+            <Button fx:id="AddTitleButton" layoutX="301.0" layoutY="241.0" mnemonicParsing="false" onAction="#AddCard" text="Create Title" />
+            <ComboBox fx:id="Paiment" layoutX="116.0" layoutY="188.0" prefWidth="150.0" />
+            <Label layoutX="29.0" layoutY="192.0" text="Paiment" />
+            <Label fx:id="Price" layoutX="31.0" layoutY="232.0" text="Price  : ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="TypeOfUser" layoutX="116.0" layoutY="102.0" onAction="#TitleChoice" prefWidth="150.0" />
+            <Label fx:id="TypeOfUserLabel" layoutX="29.0" layoutY="106.0" text="Type of user" />
+            <Label fx:id="IDNumberfieldLable" layoutX="29.0" layoutY="144.0" text="IDNumber" />
+            <TextField fx:id="IDNumberfield" layoutX="116.0" layoutY="140.0" prefHeight="27.0" prefWidth="150.0" />
+            <Label fx:id="TypeOfCardError" layoutX="274.0" layoutY="59.0" text="Chose type of card" textFill="#fe0000" />
+            <Label fx:id="TypeOfUserError" layoutX="273.0" layoutY="106.0" text="Chose user" textFill="#fe0000" />
+            <Label fx:id="IDNumberfieldError" layoutX="277.0" layoutY="144.0" text="Enter id number" textFill="#fe0000" />
+            <Label fx:id="PaimentError" layoutX="277.0" layoutY="192.0" text="Enter paiment" textFill="#fe0000" />
          </children>
       </AnchorPane>
    </children>
