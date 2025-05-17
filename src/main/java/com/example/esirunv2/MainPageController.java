@@ -15,6 +15,7 @@ public class MainPageController {
     @FXML
     private Label welcomeText;
 
+    /* To Switch the the add user page*/
     public void SwitchToAddUser(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("AddUserPage.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

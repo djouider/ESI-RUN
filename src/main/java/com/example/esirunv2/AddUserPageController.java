@@ -33,9 +33,20 @@ public class AddUserPageController {
     @FXML private Label DateOfBirthError;
     @FXML private Label IDNumberError;
     @FXML private Label TypeOfUserError;
+    @FXML private Label RoleError;
     public void SwitchToHomePage() {
 
     }
+
+    @FXML
+    private ComboBox<String> RoleComboBox;  // Must match fx:id
+
+    // List of choices
+    private final ObservableList<String> Roles =
+            FXCollections.observableArrayList(
+                    "CONDUCTEUR",
+                    "AGENT"
+            );
 
     @FXML
     public void AddUser(ActionEvent actionEvent) throws IOException {
@@ -47,7 +58,9 @@ public class AddUserPageController {
             TypeOfUserError.setVisible(false);
             IDNumberError.setVisible(false);
         } else if (EmployeeCheckBox.isSelected()) {
+
             choice = "Employee";
+
             TypeOfUserError.setVisible(false);
             String IdNumber = IDNumberField.getText();
             if (IdNumber.isEmpty()){
@@ -56,6 +69,14 @@ public class AddUserPageController {
             } else {
                 IDNumberError.setVisible(false);
             }
+
+            String Role = RoleComboBox.getValue();
+            if (Role == null){
+                RoleError.setVisible(true);
+            } else {
+                RoleError.setVisible(false);
+            }
+
         } else {
             TypeOfUserError.setVisible(true);
         }
@@ -102,18 +123,22 @@ public class AddUserPageController {
         DateOfBirth.setValue(null);
     }
 
+    /*when checking the passenger checkbox*/
     public void AddPassenger(ActionEvent actionEvent) throws IOException {
         EmployeeCheckBox.setSelected(false);
         PassengerCheckBox.setSelected(true);
         IDNumberField.setVisible(false);
         IDNumberError.setVisible(false);
-
+        RoleError.setVisible(false);
+        RoleComboBox.setVisible(false);
     }
 
+    /*when checking the employee checkbox*/
     public void AddEmployee(ActionEvent actionEvent) throws IOException {
         PassengerCheckBox.setSelected(false);
         EmployeeCheckBox.setSelected(true);
         IDNumberField.setVisible(true);
+        RoleComboBox.setVisible(true);
     }
 
     public void SwitchToFareManagement(ActionEvent event) throws IOException {
@@ -133,6 +158,7 @@ public class AddUserPageController {
         stage.show();
     }
 
+    /*Whene Starting*/
     @FXML
     public void initialize() {
         // Mutual exclusion via listeners
@@ -142,5 +168,8 @@ public class AddUserPageController {
         LastNameError.setVisible(false);
         Disabled.setSelected(false);
         TypeOfUserError.setVisible(false);
+        RoleError.setVisible(false);
+        RoleComboBox.setItems(Roles);
+        RoleComboBox.setVisible(false);
     }
 }

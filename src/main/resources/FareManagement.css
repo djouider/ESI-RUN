@@ -34,6 +34,7 @@
     -fx-border-style: solid;
     -fx-border-width: 0.5px;
 }
+x
 #FareManagement {
 
     -fx-background-color: #0080FF;
@@ -50,12 +51,11 @@
     -fx-font-weight: bold;
 }
 
-#AddUserButton {
-    -fx-background-color: #2F9619;
+#AddTtileButton {
+    -fx-background-color: #1B69D0;
     -fx-text-fill: #F3F1F1;
 }
 
-#RegisteredUsersList{
-    -fx-background-color: #1B69D0;
-    -fx-text-fill: #F3F1F1;
+#Background {
+    -fx-fill: #000000;
 }
