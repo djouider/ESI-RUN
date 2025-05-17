@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="416.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esirunv2.AddUserPageController">
+<AnchorPane prefHeight="416.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esirunv2.FareManagementController">
    <children>
       <AnchorPane fx:id="SidbarHolder" prefHeight="418.0" prefWidth="164.0">
          <children>
@@ -36,7 +36,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button fx:id="FareManagement" mnemonicParsing="false" onAction="#SwitchToFareManagement" prefHeight="28.0" prefWidth="99.0" text="Fare management">
+                  <Button fx:id="FareManagement" mnemonicParsing="false" prefHeight="28.0" prefWidth="99.0" text="Fare management">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -46,7 +46,7 @@
          </children></AnchorPane>
       <AnchorPane fx:id="PageRole" layoutX="-2.0" prefHeight="93.0" prefWidth="640.0">
          <children>
-            <Label fx:id="TitlePage" layoutX="176.0" layoutY="34.0" text="Add a user">
+            <Label fx:id="TitlePage" layoutX="176.0" layoutY="34.0" text="Fare Management">
                <font>
                   <Font size="16.0" />
                </font>
@@ -58,12 +58,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="AddUserButton" layoutX="532.0" layoutY="364.0" mnemonicParsing="false" onAction="#AddUser" prefHeight="30.0" prefWidth="77.0" text="Add User" />
-      <Button fx:id="CancelButton" layoutX="444.0" layoutY="364.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="30.0" prefWidth="77.0" text="Cancel" />
-      <Label fx:id="DateOfBirthError" layoutX="213.0" layoutY="209.0" textFill="#ff3001">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
+      <Button fx:id="AddUserButton" layoutX="532.0" layoutY="364.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="Add User" />
+      <Button fx:id="CancelButton" layoutX="444.0" layoutY="364.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="Cancel" />
    </children>
 </AnchorPane>

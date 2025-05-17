@@ -118,8 +118,17 @@ public class AddUserPageController {
 
     public void SwitchToFareManagement(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FareManagement.fxml"));
+        if (root != null) {
+            System.out.println("FareManagement.fxml not loaded");
+        }
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+        try {
+            scene.getStylesheets().add(getClass().getResource(("/FareManagement.css")).toExternalForm());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("toExternalForm returned null");
+        }
         stage.setScene(scene);
         stage.show();
     }

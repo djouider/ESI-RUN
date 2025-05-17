@@ -39,7 +39,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button fx:id="FareManagement" mnemonicParsing="false" prefHeight="28.0" prefWidth="99.0" text="Fare management">
+                  <Button fx:id="FareManagement" mnemonicParsing="false" onAction="#SwitchToFareManagement" prefHeight="28.0" prefWidth="99.0" text="Fare management">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -95,6 +95,6 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button fx:id="RegisteredUsersList" layoutX="211.0" layoutY="366.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="144.0" text="List of registered users" />
+      <Button fx:id="RegisteredUsersList" layoutX="214.0" layoutY="365.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="144.0" text="List of registered users" />
    </children>
 </AnchorPane>
