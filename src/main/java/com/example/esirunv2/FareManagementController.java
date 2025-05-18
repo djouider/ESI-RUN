@@ -1,5 +1,6 @@
 package com.example.esirunv2;
 
+import com.example.esirunv2.core.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class FareManagementController {
 
@@ -29,19 +31,19 @@ public class FareManagementController {
 
     @FXML private ComboBox<String> TypeOfCard;
     @FXML private Label TypeOfUserLabel;
-    @FXML private Label IDNumberfieldLable;
     @FXML private ComboBox<String> Paiment;
     @FXML private ComboBox<String> TypeOfUser;
+    private Usager TestUsager1 = new Usager("Ali", "BenMohamed", LocalDate.of(2010, 5, 12), false);
+    private Employe TestEmploye1 = new Employe("Ahmed", "Tahar", LocalDate.of(1980, 3, 25), false, "A123", TypeFonction.AGENT);
     @FXML private final ObservableList<String> cards = FXCollections.observableArrayList("ticket","Personal navigation card");
     @FXML private final ObservableList<String> paiments = FXCollections.observableArrayList("espèces","Dahabia","BaridiMob");
-    @FXML private final ObservableList<String> TypeUsers = FXCollections.observableArrayList("Passenger","Employee");
-    @FXML private TextField IDNumberfield;
+    @FXML private final ObservableList<String> TypeUsers = FXCollections.observableArrayList(TestUsager1.getFullName(),TestEmploye1.getFullName());
 
     /* Error handling*/
     @FXML private Label TypeOfCardError;
     @FXML private Label PaimentError;
     @FXML private Label TypeOfUserError;
-    @FXML private Label IDNumberfieldError;
+    @FXML private Label TitleCreatedSuccefullyLabel;
 
     public void SwitchToAddUser(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("AddUserPage.fxml"));
@@ -65,8 +67,6 @@ public class FareManagementController {
         Background.setEffect(new DropShadow(10, Color.BLACK));
         TypeOfUserLabel.setVisible(false);
         TypeOfUser.setVisible(false);
-        IDNumberfield.setVisible(false);
-        IDNumberfieldLable.setVisible(false);
     }
 
     public void SwitchToReportProblem(ActionEvent event) throws IOException {
@@ -93,11 +93,79 @@ public class FareManagementController {
         TypeOfCardError.setVisible(false);
         PaimentError.setVisible(false);
         TypeOfUserError.setVisible(false);
-        IDNumberfieldError.setVisible(false);
+        TitleCreatedSuccefullyLabel.setVisible(false);
     }
 
     @FXML
-    public void TitleChoice(ActionEvent event) throws IOException {
+    public void AddCard(ActionEvent event) throws IOException { /* TO ADD TITLETRONSPORT*/
+        TitreTransport newTitreTransport;
+        Personne personne;
+        Ticket ticket = new Ticket();
+        CartePersonnelle cartepersonnelle = new CartePersonnelle();
+        int price;
+
+        TypeOfCardError.setVisible(false);
+        PaimentError.setVisible(false);
+        TypeOfUserError.setVisible(false);
+        TitleCreatedSuccefullyLabel.setVisible(false);
+        String choicePaiment;
+        if (Paiment.getValue() == null) {
+            PaimentError.setVisible(true);
+            choicePaiment = "";
+        } else {
+            PaimentError.setVisible(false);
+            choicePaiment= Paiment.getValue();
+        }
+
+        String choiceCard = TypeOfCard.getValue();
+        String choiceTypeUser = TypeOfUser.getValue();
+        if (choiceCard == null) {
+            TypeOfCardError.setVisible(true);
+
+        } else {
+            TypeOfCardError.setVisible(false);
+            if (choiceCard.equals("Personal navigation card")) {
+                choiceTypeUser = TypeOfUser.getValue();
+                if (choiceTypeUser == null) {
+                    TypeOfUserError.setVisible(true);
+                    TypeOfUserError.setText("Chose a user");
+                    choiceTypeUser = "";
+                } else {
+                    TypeOfUserError.setVisible(false);
+                    choiceTypeUser = choiceTypeUser;
+                    /* DO SOME ALGOS TO FIND THE PERSON WITH THIS NAMES POSSIBLY ADD MATRICULE AND RETUR IT :*/
+                    /* + When chosing a user throw an exception that he deosnt get a titiel and uncomment this label
+                    * TypeOfUserError.setVisible(true);
+                    * TypeOfUserError.setText("The personne doesnt have the right to have a title card");*/
+
+//                    personne =
+                }
+
+            } else {
+            }
+            /* Here there should be treatement to get the price*/
+            Price.setText("Price :");
+            //Cancel(new ActionEvent());
+
+            if (!choicePaiment.equals("") && !choiceCard.equals("") ) {
+                if(choiceCard.equals("Personal navigation card")) {
+                    if (!choiceTypeUser.isEmpty()){
+                        TitleCreatedSuccefullyLabel.setVisible(true);
+//                        newTitreTransport = new CartePersonnelle(personne);
+                    }
+                } else {
+                    TitleCreatedSuccefullyLabel.setVisible(true);
+                    newTitreTransport = ticket;
+                }
+            }
+        }
+
+
+    }
+
+    @FXML
+    public void TitleChoice(ActionEvent event) throws IOException { /* TO MAKE THE NECESSARY FIELDS VISIBLE*/
+        TitleCreatedSuccefullyLabel.setVisible(false);
         String choice = TypeOfCard.getValue();
         int price;
         if (choice != null) {
@@ -105,15 +173,11 @@ public class FareManagementController {
                 price = 50;
                 Price.setText(Price.getText()+" "+price+" Da");
                 TypeOfUser.setVisible(false);
-                IDNumberfield.setVisible(false);
                 TypeOfUserLabel.setVisible(false);
-                IDNumberfieldLable.setVisible(false);
             } else {
                 TypeOfUser.setVisible(true);
-                IDNumberfield.setVisible(true);
                 TypeOfUserLabel.setVisible(true);
-                IDNumberfieldLable.setVisible(true);
-                /* Here there should be treatement to get the price*/
+
                 Price.setText("Price :");
             }
         }
@@ -134,51 +198,18 @@ public class FareManagementController {
         stage.show();
     }
 
-    @FXML
-    public void AddCard(ActionEvent event) throws IOException {
-        String choiceCard = TypeOfCard.getValue();
-        if (choiceCard == null) {
-            TypeOfCardError.setVisible(true);
-        } else {
-            TypeOfCardError.setVisible(false);
-            if (choiceCard.equals("Personal navigation card")) {
-                String choiceTypeUser = TypeOfUser.getValue();
-                if (choiceTypeUser == null) {
-                    TypeOfUserError.setVisible(true);
-                } else {
-                    TypeOfUserError.setVisible(false);
-                }
-
-                String choiceIDNumber = IDNumberfield.getText();
-                if (choiceIDNumber == null) {
-                    IDNumberfieldError.setVisible(true);
-                } else {
-                    IDNumberfieldError.setVisible(false);
-                }
-            }
-            Cancel(new ActionEvent());
-        }
-
-        String choicePaiment = Paiment.getValue();
-        if (choicePaiment == null) {
-            PaimentError.setVisible(true);
-        } else {
-            PaimentError.setVisible(false);
-        }
-    }
 
     @FXML
     public void Cancel(ActionEvent event) {
         AddTitleCard.setVisible(false);
         Background.setVisible(false);
-        IDNumberfield.clear();
         TypeOfCard.setValue(null);
         Paiment.setValue(null);
         TypeOfUser.setValue(null);
         TypeOfCardError.setVisible(false);
         PaimentError.setVisible(false);
         TypeOfUserError.setVisible(false);
-        IDNumberfieldError.setVisible(false);
         Price.setText("Price :");
+        TitleCreatedSuccefullyLabel.setVisible(false);
     }
 }

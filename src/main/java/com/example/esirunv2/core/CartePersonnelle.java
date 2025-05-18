@@ -48,6 +48,8 @@ public class CartePersonnelle extends TitreTransport{
         }
     }
 
+    public CartePersonnelle() {}
+
     public boolean estValide(LocalDate date)throws TitreNonValideException{
 
         if(date.isBefore(dateExperation)) {

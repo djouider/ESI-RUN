@@ -27,6 +27,7 @@ public abstract class Personne {
     }
     public LocalDate getDateNaissance() {return dateNaissance;}
     public boolean getHandicaped() {return handicaped;}
+    public String getFullName() { return getNom()+" "+getPrenom(); }
 
     public void SetFields(String nom,String prenom,LocalDate dateNaissance,boolean handicaped){
         this.nom=nom;

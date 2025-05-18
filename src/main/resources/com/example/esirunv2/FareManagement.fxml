@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -87,13 +86,15 @@
                </font>
             </Label>
             <ComboBox fx:id="TypeOfUser" layoutX="116.0" layoutY="102.0" onAction="#TitleChoice" prefWidth="150.0" />
-            <Label fx:id="TypeOfUserLabel" layoutX="29.0" layoutY="106.0" text="Type of user" />
-            <Label fx:id="IDNumberfieldLable" layoutX="29.0" layoutY="144.0" text="IDNumber" />
-            <TextField fx:id="IDNumberfield" layoutX="116.0" layoutY="140.0" prefHeight="27.0" prefWidth="150.0" />
+            <Label fx:id="TypeOfUserLabel" layoutX="29.0" layoutY="106.0" text="User" />
             <Label fx:id="TypeOfCardError" layoutX="274.0" layoutY="59.0" text="Chose type of card" textFill="#fe0000" />
             <Label fx:id="TypeOfUserError" layoutX="273.0" layoutY="106.0" text="Chose user" textFill="#fe0000" />
-            <Label fx:id="IDNumberfieldError" layoutX="277.0" layoutY="144.0" text="Enter id number" textFill="#fe0000" />
             <Label fx:id="PaimentError" layoutX="277.0" layoutY="192.0" text="Enter paiment" textFill="#fe0000" />
+            <Label fx:id="TitleCreatedSuccefullyLabel" layoutX="126.0" layoutY="19.0" text="Title Created Succesfully" textFill="#2da62d">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
