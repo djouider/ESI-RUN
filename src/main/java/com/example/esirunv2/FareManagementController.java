@@ -73,6 +73,12 @@ public class FareManagementController {
         Parent root = FXMLLoader.load(getClass().getResource("ReportProblemPage.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
+        try {
+            scene.getStylesheets().add(getClass().getResource(("/SideBarCss.css")).toExternalForm());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("toExternalForm returned null");
+        }
         stage.setScene(scene);
         stage.show();
     }

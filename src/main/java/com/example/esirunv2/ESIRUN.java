@@ -13,6 +13,7 @@ public class ESIRUN extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(ESIRUN.class.getResource("MainPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("ESI RUN ");
+//        stage.setFullScreen(true);
         stage.setScene(scene);
         stage.show();
     }
