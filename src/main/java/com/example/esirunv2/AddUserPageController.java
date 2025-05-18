@@ -1,5 +1,9 @@
 package com.example.esirunv2;
 
+import com.example.esirunv2.core.Employe;
+import com.example.esirunv2.core.Personne;
+import com.example.esirunv2.core.TypeFonction;
+import com.example.esirunv2.core.Usager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -34,82 +40,115 @@ public class AddUserPageController {
     @FXML private Label IDNumberError;
     @FXML private Label TypeOfUserError;
     @FXML private Label RoleError;
+    @FXML private Label UserCreationSuccesLabel;
     public void SwitchToHomePage() {
 
     }
 
     @FXML
-    private ComboBox<String> RoleComboBox;  // Must match fx:id
+    private ComboBox<TypeFonction> RoleComboBox;  // Must match fx:id
 
     // List of choices
-    private final ObservableList<String> Roles =
+    private final ObservableList<TypeFonction> Roles =
             FXCollections.observableArrayList(
-                    "CONDUCTEUR",
-                    "AGENT"
+                    TypeFonction.values()
             );
 
     @FXML
     public void AddUser(ActionEvent actionEvent) throws IOException {
-
+        Employe newEmploy = new Employe();
+        Usager newUsager = new Usager();
+        Personne newPerson = newUsager;
+        boolean AllFieldsFilled = false;
         /* getting the type of the user */
+        UserCreationSuccesLabel.setVisible(false);
         String choice="";
         if (PassengerCheckBox.isSelected()) {
             choice = "Passenger";
+            newPerson = newUsager;
+            AllFieldsFilled = true;
             TypeOfUserError.setVisible(false);
             IDNumberError.setVisible(false);
         } else if (EmployeeCheckBox.isSelected()) {
 
             choice = "Employee";
-
+            AllFieldsFilled = true;
+            newPerson = newEmploy;
             TypeOfUserError.setVisible(false);
-            String IdNumber = IDNumberField.getText();
-            if (IdNumber.isEmpty()){
+            String IdNumber;
+            if (IDNumberField.getText().isEmpty()){
                 IDNumberError.setVisible(true);
                 IdNumber = "";
             } else {
                 IDNumberError.setVisible(false);
+                IdNumber = IDNumberField.getText();
             }
 
-            String Role = RoleComboBox.getValue();
+            TypeFonction Role = RoleComboBox.getValue();
             if (Role == null){
                 RoleError.setVisible(true);
             } else {
                 RoleError.setVisible(false);
+                Role = RoleComboBox.getValue();
             }
+
+           newPerson  = new Employe(IdNumber,Role);
 
         } else {
             TypeOfUserError.setVisible(true);
         }
 
         /* getting the first name */
-        String FirstName = this.FirstName.getText();
-         if (FirstName.isEmpty()) {
+        String FirstName;
+         if (this.FirstName.getText().isEmpty()) {
              FirstNameError.setVisible(true);
              FirstName = "";
          } else {
              FirstNameError.setVisible(false);
+             FirstName = this.FirstName.getText();
          }
 
         /* getting the last name */
-         String LastName = this.LastName.getText();
-         if (LastName.isEmpty()) {
+         String LastName ;
+         if (this.LastName.getText().isEmpty()) {
              LastNameError.setVisible(true);
+             LastName = "";
          } else {
              LastNameError.setVisible(false);
+             LastName = this.LastName.getText();
          }
 
          boolean Disable = this.Disabled.isSelected();
 
         /* getting the date of birth */
-         LocalDate DateofBirth = this.DateOfBirth.getValue();
-         if (DateofBirth == null) {
+         LocalDate DateofBirth ;
+         if (this.DateOfBirth.getValue() == null) {
              DateOfBirthError.setVisible(true);
              DateOfBirthError.setText("Enter the date of birth");
+             DateofBirth = null;
          } else {
              DateOfBirthError.setVisible(false);
+             DateofBirth = this.DateOfBirth.getValue();
          }
 
+         if (!choice.equals("")){
+             try {
+                 newPerson.SetFields(FirstName, LastName, DateofBirth, Disable);
+             }  catch (NullPointerException e) {
+                 System.out.println(e.getMessage());
+                 System.out.println("SetFields returned null");
+             }
+         }
 
+         if (!this.FirstName.getText().isEmpty() && !this.LastName.getText().isEmpty() && DateOfBirth != null && !choice.isEmpty()) {
+             if (choice.equals("Employee")){
+                 if (!IDNumberField.getText().isEmpty() && RoleComboBox.getValue() != null) {
+                     UserCreationSuccesLabel.setVisible(true);
+                 }
+             }else {
+                 UserCreationSuccesLabel.setVisible(true);
+             }
+         }
 
          System.out.println(FirstName + " " + LastName + " " + Disable + " " + DateofBirth);
 
@@ -121,6 +160,14 @@ public class AddUserPageController {
         LastName.clear();
         Disabled.setSelected(false);
         DateOfBirth.setValue(null);
+        IDNumberError.setVisible(false);
+        TypeOfUserError.setVisible(false);
+        RoleError.setVisible(false);
+        UserCreationSuccesLabel.setVisible(false);
+        FirstNameError.setVisible(false);
+        LastNameError.setVisible(false);
+        RoleComboBox.setValue(null);
+        IDNumberField.clear();
     }
 
     /*when checking the passenger checkbox*/
@@ -199,5 +246,6 @@ public class AddUserPageController {
         RoleError.setVisible(false);
         RoleComboBox.setItems(Roles);
         RoleComboBox.setVisible(false);
+        UserCreationSuccesLabel.setVisible(false);
     }
 }

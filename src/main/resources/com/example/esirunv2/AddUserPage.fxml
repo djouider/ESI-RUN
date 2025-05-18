@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="416.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esirunv2.AddUserPageController">
+<AnchorPane prefHeight="416.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esirunv2.AddUserPageController">
    <children>
       <AnchorPane fx:id="SidbarHolder" prefHeight="418.0" prefWidth="164.0">
          <children>
@@ -101,6 +101,11 @@
       <Label fx:id="RoleError" layoutX="408.0" layoutY="273.0" text="Enter the Role" textFill="#ff3001">
          <font>
             <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="UserCreationSuccesLabel" layoutX="214.0" layoutY="334.0" text="Usre created Succefully" textFill="#2da62d">
+         <font>
+            <Font size="14.0" />
          </font>
       </Label>
    </children>
