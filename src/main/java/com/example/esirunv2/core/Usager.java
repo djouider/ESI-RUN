@@ -23,4 +23,12 @@ public class Usager extends Personne {
         super.SetFields( nom, prenom, dateNaissance, handicaped );
     }
 
+    @Override
+    public int compareTo(Personne o) {
+        return toString().compareTo(o.toString());
+    }
+
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
 }

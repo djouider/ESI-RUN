@@ -31,5 +31,18 @@ public class Employe extends Personne {
         return typefonction;
     }
 
+    @Override
+    public int compareTo(Personne o) {
+        if (o instanceof Employe){
+            return matricule.compareTo(((Employe) o).matricule);
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return this.matricule.hashCode();
+    }
     
 }

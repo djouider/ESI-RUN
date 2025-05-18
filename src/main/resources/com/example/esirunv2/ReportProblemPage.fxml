@@ -47,7 +47,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="AddUserButton" layoutX="517.0" layoutY="364.0" mnemonicParsing="false" onAction="#AddUser" prefHeight="30.0" prefWidth="93.0" text="Add Complaint" />
+      <Button fx:id="AddUserButton" layoutX="517.0" layoutY="364.0" mnemonicParsing="false" onAction="#AddComplaint" prefHeight="30.0" prefWidth="93.0" text="Add Complaint" />
       <Button fx:id="CancelButton" layoutX="430.0" layoutY="364.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="30.0" prefWidth="77.0" text="Cancel" />
       <Label fx:id="DateOfBirthError" layoutX="213.0" layoutY="209.0" textFill="#ff3001">
          <font>
@@ -65,5 +65,11 @@
       <Label fx:id="CibleCBError" layoutX="430.0" layoutY="199.0" text="chose the cible" textFill="RED" />
       <Label layoutX="176.0" layoutY="237.0" text="Description" />
       <TextField fx:id="DescriptionField" alignment="TOP_LEFT" layoutX="176.0" layoutY="255.0" prefHeight="83.0" prefWidth="296.0" />
+      <Label fx:id="DescriptionError" layoutX="478.0" layoutY="255.0" text="Enter a Description" textFill="RED" />
+      <Label fx:id="ComplaintSuccefulllLabel" layoutX="172.0" layoutY="364.0" text="Enter a Description" textFill="#2da62d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

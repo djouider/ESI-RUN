@@ -89,7 +89,9 @@ public class FareManagementController {
         AddTitleCard.setVisible(false);
         Paiment.setItems(paiments);
         TypeOfCard.setItems(cards);
+        /* THE LOGIC TO ADD USERS TO A LIST AND RETURN IT IN TypeUsers */
         TypeOfUser.setItems(TypeUsers);
+
         TypeOfCardError.setVisible(false);
         PaimentError.setVisible(false);
         TypeOfUserError.setVisible(false);

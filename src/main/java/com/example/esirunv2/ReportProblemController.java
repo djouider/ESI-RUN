@@ -1,5 +1,6 @@
 package com.example.esirunv2;
 
+import com.example.esirunv2.core.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,20 +17,29 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class ReportProblemController {
 
-    @FXML private ComboBox<String> ComplaintType;
-    @FXML private final ObservableList<String> complainttypes = FXCollections.observableArrayList("TECHNIQUE","SERVICE");
+    private Usager TestUsager1 = new Usager("Ali", "BenMohamed", LocalDate.of(2010, 5, 12), false);
+    private Employe TestEmploye1 = new Employe("Ahmed", "Tahar", LocalDate.of(1980, 3, 25), false, "A123", TypeFonction.AGENT);
+    private MoyenTransport bus1 = new MoyenTransport("BUS1");
+    private Station station1= new Station("Oued Smar");
+
+    @FXML private ComboBox<TypeReclamation> ComplaintType;
+    @FXML private final ObservableList<TypeReclamation> complainttypes = FXCollections.observableArrayList( TypeReclamation.values() );
     @FXML private ComboBox<String> Reporter;
-    @FXML private final ObservableList<String> reporters = FXCollections.observableArrayList("user1");
+    @FXML private final ObservableList<String> reporters = FXCollections.observableArrayList(TestUsager1.toString(), TestEmploye1.toString());
     @FXML private ComboBox<String> CibleCB;
-    @FXML private final ObservableList<String> suspendebles = FXCollections.observableArrayList("bus1");
+    @FXML private final ObservableList<String> suspendebles = FXCollections.observableArrayList(bus1.toString(),station1.toString());
     @FXML private TextField DescriptionField;
 
     @FXML private Label ComplaintTypeError;
     @FXML private Label ReporterError;
     @FXML private Label CibleCBError;
+    @FXML private Label DescriptionError;
+    @FXML private Label ComplaintSuccefulllLabel;
+
     @FXML
     public void SwitchToAddUserPage(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("AddUserPage.fxml"));
@@ -66,17 +76,28 @@ public class ReportProblemController {
         ComplaintTypeError.setVisible(false);
         ReporterError.setVisible(false);
         CibleCBError.setVisible(false);
+        DescriptionError.setVisible(false);
+        ComplaintSuccefulllLabel.setVisible(false);
         ComplaintType.setItems(complainttypes);
+
+        /* THE LOGIC TO ADD USERS TO reporters LIST AND THEN ADD IT TO Reporters*/
         Reporter.setItems(reporters);
+
+        /* THE LOGIC TO ADD USERS TO cibles LIST AND THEN ADD IT TO Reporters*/
         CibleCB.setItems(suspendebles);
     }
 
-    public void AddUser(ActionEvent event) throws IOException {
+    public void AddComplaint(ActionEvent event) throws IOException {
+        DescriptionError.setVisible(false);
+        Reclamation newReclamation;
+        ComplaintSuccefulllLabel.setVisible(false);
+        String reporter,cible;
+        TypeReclamation type;
+        Personne personne = null;
 
-        String type,reporter,cible;
         if (ComplaintType.getValue() == null) {
             ComplaintTypeError.setVisible(true);
-            type = "";
+            type = null;
         } else {
             ComplaintTypeError.setVisible(false);
             type = ComplaintType.getValue();
@@ -88,6 +109,9 @@ public class ReportProblemController {
         } else {
             ReporterError.setVisible(false);
             reporter = Reporter.getValue();
+
+            /* SEARCH FOr THE PERSONNE WHO REPORTED (OR GET THE PERSONNE */
+            personne = null;
         }
 
         if (CibleCB.getValue() == null) {
@@ -98,16 +122,27 @@ public class ReportProblemController {
             cible = CibleCB.getValue();;
         }
 
-        String description = DescriptionField.getText();
-        if (description == null) {
+        String description ;
+        if ((DescriptionField.getText() == null) || (DescriptionField.getText().isEmpty())) {
+            DescriptionError.setVisible(true);
             description = "";
+        } else {
+            description = DescriptionField.getText();
         }
 
+        if (!ComplaintTypeError.isVisible() && !ReporterError.isVisible() && !CibleCBError.isVisible() && !description.isEmpty()) {
+            ComplaintSuccefulllLabel.setVisible(true);
+
+            /* Change cible so it returs suspenadble*/
+            newReclamation = new Reclamation(personne,type,bus1,description,LocalDate.now());
+        }
         System.out.println("type: "+type+" reporter: "+reporter+" cible: "+cible+" description: "+description);
     }
 
     public void Cancel(ActionEvent event) throws IOException {
         ComplaintType.setValue(null);
+        ComplaintSuccefulllLabel.setVisible(false);
+        DescriptionError.setVisible(false);
         Reporter.setValue(null);
         CibleCB.setValue(null);
         DescriptionField.clear();

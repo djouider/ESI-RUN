@@ -3,7 +3,7 @@ package com.example.esirunv2.core;
 import java.time.LocalDate;
 
 // Classe abstraite Personne
-public abstract class Personne {
+public abstract class Personne implements Comparable<Personne>{
 
     protected  String nom;
     protected  String prenom;
@@ -28,6 +28,10 @@ public abstract class Personne {
     public LocalDate getDateNaissance() {return dateNaissance;}
     public boolean getHandicaped() {return handicaped;}
     public String getFullName() { return getNom()+" "+getPrenom(); }
+    @Override
+    public String toString() {
+        return prenom + " " + nom;
+    }
 
     public void SetFields(String nom,String prenom,LocalDate dateNaissance,boolean handicaped){
         this.nom=nom;
