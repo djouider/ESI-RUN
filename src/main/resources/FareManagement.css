@@ -1,21 +1,21 @@
 #SideBarBottonSelected {
-    -fx-background-color: #0080FF;
-    -fx-text-fill: #F3F1F1;
-    -fx-border-radius: 8px;
+    /*-fx-background-color: #0080FF;*/
+    /*-fx-text-fill: #F3F1F1;*/
+    /*-fx-border-radius: 8px;*/
 }
 
 #SideBarBottonNotSelected {
-    -fx-background-color: #F3F1F1;
-    -fx-border-radius: 8px;
-    -fx-border-style: solid;
-    -fx-border-width: 0.5px;
+    /*-fx-background-color: #F3F1F1;*/
+    /*-fx-border-radius: 8px;*/
+    /*-fx-border-style: solid;*/
+    /*-fx-border-width: 0.5px;*/
 }
 
 #SideBarBottonNotSelected1{
-    -fx-background-color: #F3F1F1;
-    -fx-border-radius: 8px;
-    -fx-border-style: solid;
-    -fx-border-width: 0.5px;
+    /*-fx-background-color: #F3F1F1;*/
+    /*-fx-border-radius: 8px;*/
+    /*-fx-border-style: solid;*/
+    /*-fx-border-width: 0.5px;*/
 }
 
 #SideBarVhbox {
@@ -29,16 +29,16 @@
 }
 
 #AddUser {
-    -fx-background-color: #F3F1F1;
-    -fx-border-radius: 8px;
-    -fx-border-style: solid;
-    -fx-border-width: 0.5px;
+    /*-fx-background-color: #F3F1F1;*/
+    /*-fx-border-radius: 8px;*/
+    /*-fx-border-style: solid;*/
+    /*-fx-border-width: 0.5px;*/
 }
 
 #FareManagement {
-    -fx-background-color: #0080FF;
-    -fx-text-fill: #F3F1F1;
-    -fx-border-radius: 8px;
+    /*-fx-background-color: #0080FF;*/
+    /*-fx-text-fill: #F3F1F1;*/
+    /*-fx-border-radius: 8px;*/
 }
 
 #PageRole {

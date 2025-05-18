@@ -1,0 +1,18 @@
+#SideBarVhbox {
+    -fx-border-width: 1px 0px 1px 0px;
+    -fx-border-color: #969696;
+}
+
+#SidbarHolder {
+    -fx-border-width: 0px 1px 0px 0px;
+    -fx-border-color: #969696;
+}
+
+#PageRole {
+    -fx-border-width: 0px 0px 0px 0px;
+    -fx-border-color: #969696;
+}
+
+#TitlePage {
+    -fx-font-weight: bold;
+}

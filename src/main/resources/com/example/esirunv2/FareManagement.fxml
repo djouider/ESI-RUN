@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="416.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esirunv2.FareManagementController">
+<AnchorPane prefHeight="416.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.esirunv2.FareManagementController">
    <children>
       <AnchorPane prefHeight="418.0" prefWidth="640.0">
          <children>
@@ -27,7 +27,7 @@
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="SideBarBottonNotSelected1" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Report problem">
+                        <Button fx:id="SideBarBottonNotSelected1" mnemonicParsing="false" onAction="#SwitchToReportProblem" prefHeight="28.0" prefWidth="119.0" text="Report problem">
                            <font>
                               <Font size="10.0" />
                            </font>

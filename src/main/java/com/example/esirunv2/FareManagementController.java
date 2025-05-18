@@ -63,6 +63,18 @@ public class FareManagementController {
         AddTitleCard.setVisible(true);
         Background.setVisible(true);
         Background.setEffect(new DropShadow(10, Color.BLACK));
+        TypeOfUserLabel.setVisible(false);
+        TypeOfUser.setVisible(false);
+        IDNumberfield.setVisible(false);
+        IDNumberfieldLable.setVisible(false);
+    }
+
+    public void SwitchToReportProblem(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("ReportProblemPage.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -138,5 +150,14 @@ public class FareManagementController {
     public void Cancel(ActionEvent event) {
         AddTitleCard.setVisible(false);
         Background.setVisible(false);
+        IDNumberfield.clear();
+        TypeOfCard.setValue(null);
+        Paiment.setValue(null);
+        TypeOfUser.setValue(null);
+        TypeOfCardError.setVisible(false);
+        PaimentError.setVisible(false);
+        TypeOfUserError.setVisible(false);
+        IDNumberfieldError.setVisible(false);
+        Price.setText("Price :");
     }
 }
