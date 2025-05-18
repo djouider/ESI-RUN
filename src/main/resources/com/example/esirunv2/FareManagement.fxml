@@ -45,6 +45,7 @@
                               <Font size="10.0" />
                            </font>
                         </Button>
+                        <Button mnemonicParsing="false" onAction="#handleExit" prefHeight="27.0" prefWidth="46.0" text="Exit" />
                      </children>
                   </VBox>
                </children>
@@ -66,8 +67,8 @@
          </children>
       </AnchorPane>
       <Button fx:id="AddNewTtileButton" layoutX="451.0" layoutY="364.0" mnemonicParsing="false" onAction="#addNewTitleCard" prefHeight="30.0" prefWidth="159.0" text="Add new Transport Title" />
-      <StackPane fx:id="Background" prefHeight="418.0" prefWidth="640.0" />
-      <AnchorPane fx:id="AddTitleCard" layoutX="124.0" layoutY="68.0" prefHeight="282.0" prefWidth="388.0">
+      <StackPane fx:id="Background" prefHeight="418.0" prefWidth="640.0" visible="false" />
+      <AnchorPane fx:id="AddTitleCard" layoutX="124.0" layoutY="68.0" prefHeight="282.0" prefWidth="388.0" visible="false">
          <children>
             <Label layoutX="29.0" layoutY="14.0" text="Add Title">
                <font>

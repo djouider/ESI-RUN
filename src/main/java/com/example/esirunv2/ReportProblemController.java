@@ -1,6 +1,7 @@
 package com.example.esirunv2;
 
 import com.example.esirunv2.core.*;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -149,6 +150,10 @@ public class ReportProblemController {
         ComplaintTypeError.setVisible(false);
         ReporterError.setVisible(false);
         CibleCBError.setVisible(false);
+    }
+
+    @FXML public void handleExit(ActionEvent actionEvent) {
+        Platform.exit();
     }
 }
 

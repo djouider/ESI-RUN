@@ -45,6 +45,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
+                  <Button fx:id="ExitButtnon" mnemonicParsing="false" onAction="#handleExit" prefHeight="27.0" prefWidth="46.0" text="Exit" />
                </children>
             </VBox>
          </children></AnchorPane>
@@ -96,17 +97,17 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button fx:id="RegisteredUsersList" layoutX="214.0" layoutY="365.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="144.0" text="List of registered users" />
       <ComboBox fx:id="RoleComboBox" layoutX="405.0" layoutY="290.0" prefWidth="150.0" promptText="Role" />
       <Label fx:id="RoleError" layoutX="408.0" layoutY="273.0" text="Enter the Role" textFill="#ff3001">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Label fx:id="UserCreationSuccesLabel" layoutX="214.0" layoutY="334.0" text="Usre created Succefully" textFill="#2da62d">
+      <Label fx:id="UserCreationSuccesLabel" layoutX="439.0" layoutY="337.0" text="Usre created Succefully" textFill="#2da62d">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
+      <ComboBox fx:id="RegisterdUsers" layoutX="211.0" layoutY="366.0" prefHeight="27.0" prefWidth="164.0" promptText="List of registered users" />
    </children>
 </AnchorPane>

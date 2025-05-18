@@ -31,7 +31,10 @@
                   </Button>
                </children>
             </VBox>
-            <VBox fx:id="SideBarVhboxManageUsers" alignment="CENTER" layoutX="2.0" layoutY="266.0" prefHeight="109.0" prefWidth="159.0" spacing="16.0" />
+            <VBox fx:id="SideBarVhboxManageUsers" alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="266.0" prefHeight="109.0" prefWidth="159.0" spacing="16.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleExit" prefHeight="27.0" prefWidth="46.0" text="Exit" />
+               </children></VBox>
          </children></AnchorPane>
       <AnchorPane fx:id="PageRole" layoutX="-2.0" prefHeight="93.0" prefWidth="640.0">
          <children>

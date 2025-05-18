@@ -4,6 +4,7 @@ import com.example.esirunv2.core.Employe;
 import com.example.esirunv2.core.Personne;
 import com.example.esirunv2.core.TypeFonction;
 import com.example.esirunv2.core.Usager;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,7 +45,8 @@ public class AddUserPageController {
     public void SwitchToHomePage() {
 
     }
-
+    @FXML private ComboBox<String> RegisterdUsers;
+    @FXML private ObservableList<String> RegisterdUsersList = FXCollections.observableArrayList();
     @FXML
     private ComboBox<TypeFonction> RoleComboBox;  // Must match fx:id
 
@@ -54,13 +56,37 @@ public class AddUserPageController {
                     TypeFonction.values()
             );
 
+    /*Whene Starting*/
+    @FXML
+    public void initialize() {
+        // Mutual exclusion via listeners
+        /* LOGIC TO ADD REGISTERD USERS INTO THIS ARRAY RegisterdUsersList
+         * RegisterdUsers.setItems(RegisterdUsersList);
+         * */
+        IDNumberField.setVisible(false);
+        IDNumberError.setVisible(false);
+        FirstNameError.setVisible(false);
+        LastNameError.setVisible(false);
+        Disabled.setSelected(false);
+        TypeOfUserError.setVisible(false);
+        RoleError.setVisible(false);
+        RoleComboBox.setItems(Roles);
+        RoleComboBox.setVisible(false);
+        UserCreationSuccesLabel.setText("Usre created Succefully");
+        UserCreationSuccesLabel.setStyle("-fx-text-fill: Green;");
+        UserCreationSuccesLabel.setVisible(false);
+    }
+
     @FXML
     public void AddUser(ActionEvent actionEvent) throws IOException {
         Employe newEmploy = new Employe();
         Usager newUsager = new Usager();
         Personne newPerson = newUsager;
         boolean AllFieldsFilled = false;
+        boolean AlReadyExists = false;
         /* getting the type of the user */
+        UserCreationSuccesLabel.setText("Usre created Succefully");
+        UserCreationSuccesLabel.setStyle("-fx-text-fill: Green;");
         UserCreationSuccesLabel.setVisible(false);
         String choice="";
         if (PassengerCheckBox.isSelected()) {
@@ -141,6 +167,13 @@ public class AddUserPageController {
          }
 
          if (!this.FirstName.getText().isEmpty() && !this.LastName.getText().isEmpty() && DateOfBirth != null && !choice.isEmpty()) {
+             /* DO SEARCH IF AN ACCOUNT EXITS OR NOT AND RETURN THE RESULT IN AlReadyExists*/
+//             if (AlReadyExists) {
+//                 UserCreationSuccesLabel.setVisible(true);
+//                 UserCreationSuccesLabel.setText("User Already Exists");
+//                 UserCreationSuccesLabel.setStyle("-fx-text-fill: red;");
+//                 return;
+//             }
              if (choice.equals("Employee")){
                  if (!IDNumberField.getText().isEmpty() && RoleComboBox.getValue() != null) {
                      UserCreationSuccesLabel.setVisible(true);
@@ -163,11 +196,17 @@ public class AddUserPageController {
         IDNumberError.setVisible(false);
         TypeOfUserError.setVisible(false);
         RoleError.setVisible(false);
+        UserCreationSuccesLabel.setText("Usre created Succefully");
+        UserCreationSuccesLabel.setStyle("-fx-text-fill: Green;");
         UserCreationSuccesLabel.setVisible(false);
         FirstNameError.setVisible(false);
         LastNameError.setVisible(false);
         RoleComboBox.setValue(null);
         IDNumberField.clear();
+    }
+
+    @FXML public void handleExit(ActionEvent actionEvent) {
+        Platform.exit();
     }
 
     /*when checking the passenger checkbox*/
@@ -233,19 +272,4 @@ public class AddUserPageController {
         stage.show();
     }
 
-    /*Whene Starting*/
-    @FXML
-    public void initialize() {
-        // Mutual exclusion via listeners
-        IDNumberField.setVisible(false);
-        IDNumberError.setVisible(false);
-        FirstNameError.setVisible(false);
-        LastNameError.setVisible(false);
-        Disabled.setSelected(false);
-        TypeOfUserError.setVisible(false);
-        RoleError.setVisible(false);
-        RoleComboBox.setItems(Roles);
-        RoleComboBox.setVisible(false);
-        UserCreationSuccesLabel.setVisible(false);
-    }
 }

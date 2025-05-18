@@ -19,11 +19,12 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <VBox alignment="CENTER" layoutX="-1.0" layoutY="187.0" prefHeight="195.0" prefWidth="640.0" spacing="16.0">
+      <VBox alignment="CENTER" layoutX="-1.0" layoutY="187.0" prefHeight="208.0" prefWidth="640.0" spacing="16.0">
          <children>
             <Button mnemonicParsing="false" onAction="#SwitchToAddUser" prefHeight="38.0" prefWidth="158.0" text="Manage users and fares" textAlignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#SwitchToValidateFarePage" prefHeight="38.0" prefWidth="158.0" text="Fare validation" />
             <Button mnemonicParsing="false" onAction="#SwitchToReportProblem" prefHeight="38.0" prefWidth="158.0" text="Report Problem" />
+            <Button mnemonicParsing="false" onAction="#handleExit" prefHeight="27.0" prefWidth="46.0" text="Exit" />
          </children>
          <opaqueInsets>
             <Insets />
