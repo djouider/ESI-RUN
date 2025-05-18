@@ -21,7 +21,7 @@
                         <Font size="10.0" />
                      </font>
                   </Button>
-                  <Button fx:id="SideBarBottonNotSelected" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Fare validation">
+                  <Button fx:id="SideBarBottonNotSelected" mnemonicParsing="false" onAction="#SwitchToValidateFarePage" prefHeight="28.0" prefWidth="119.0" text="Fare validation">
                      <font>
                         <Font size="10.0" />
                      </font>

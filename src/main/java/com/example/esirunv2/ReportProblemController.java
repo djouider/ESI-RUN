@@ -47,6 +47,21 @@ public class ReportProblemController {
     }
 
     @FXML
+    public void SwitchToValidateFarePage(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("ValidateFarePage.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        try {
+            scene.getStylesheets().add(getClass().getResource(("/SideBarCss.css")).toExternalForm());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            System.out.println("toExternalForm returned null");
+        }
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     public void initialize() throws IOException {
         ComplaintTypeError.setVisible(false);
         ReporterError.setVisible(false);
